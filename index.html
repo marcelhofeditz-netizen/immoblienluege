@@ -1055,6 +1055,70 @@
       line-height: 1.5;
     }
 
+    /* ── WEITERE INHALTE ── */
+    .weitere {
+      border-top: 1px solid var(--border);
+      padding: var(--space-xl) clamp(1.5rem, 5vw, 3rem);
+      text-align: center;
+    }
+    .weitere__title {
+      font-family: var(--font-sans);
+      font-size: var(--text-sub);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: var(--space-md);
+    }
+    .weitere__grid {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .weitere__card {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.9rem 1.3rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+      min-width: 200px;
+    }
+    .weitere__card:hover {
+      border-color: var(--mid-grey);
+      background: #161616;
+    }
+    .weitere__card-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+    }
+    .weitere__card-text {
+      text-align: left;
+    }
+    .weitere__card-label {
+      font-size: var(--text-caption);
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.15rem;
+    }
+    .weitere__card-desc {
+      font-size: var(--text-micro);
+      color: var(--mid-grey);
+      line-height: 1.4;
+    }
+
     /* ── KEYFRAMES ── */
     @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
     @keyframes msgIn { from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)} }
@@ -1466,6 +1530,34 @@
     <button onclick="submitCta()">Vormerken</button>
   </div>
   <p class="cta__note reveal">Kein Spam. Jederzeit abbestellbar.</p>
+</section>
+
+<!-- WEITERE INHALTE -->
+<section class="weitere">
+  <h2 class="weitere__title reveal" data-i18n="weitere_title">Weitere Inhalte von Dr. Marcel Hofeditz</h2>
+  <div class="weitere__grid">
+    <a href="https://youtube.com/@offmarketpool" target="_blank" rel="noopener" class="weitere__card reveal">
+      <span class="weitere__card-icon">&#9654;</span>
+      <div class="weitere__card-text">
+        <div class="weitere__card-label">Podcast</div>
+        <div class="weitere__card-desc" data-i18n="weitere_podcast">Off-Market, Märkte & Investoren</div>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/dr-marcel-hofeditz-0b231432" target="_blank" rel="noopener" class="weitere__card reveal">
+      <span class="weitere__card-icon">in</span>
+      <div class="weitere__card-text">
+        <div class="weitere__card-label">LinkedIn</div>
+        <div class="weitere__card-desc" data-i18n="weitere_linkedin">Marktanalysen & Plattformupdates</div>
+      </div>
+    </a>
+    <a href="https://offmarketpool.de" target="_blank" rel="noopener" class="weitere__card reveal">
+      <span class="weitere__card-icon">&#9679;</span>
+      <div class="weitere__card-text">
+        <div class="weitere__card-label">OffMarketPool</div>
+        <div class="weitere__card-desc" data-i18n="weitere_omp">Europas Off-Market Plattform</div>
+      </div>
+    </a>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -2368,6 +2460,11 @@ const translations = {
     bridge_assets: 'Assets',
     bridge_scope: 'Europaweit',
     bridge_cta: 'OffMarketPool entdecken',
+    // Weitere Inhalte
+    weitere_title: 'Weitere Inhalte von Dr. Marcel Hofeditz',
+    weitere_podcast: 'Off-Market, Märkte & Investoren',
+    weitere_linkedin: 'Marktanalysen & Plattformupdates',
+    weitere_omp: 'Europas Off-Market Plattform',
     // Footer
     footer_ecosystem: 'Ökosystem',
     footer_founder: 'Gründer & Forschung',
@@ -2404,6 +2501,11 @@ const translations = {
     bridge_assets: 'Assets',
     bridge_scope: 'Pan-European',
     bridge_cta: 'Discover OffMarketPool',
+    // Weitere Inhalte
+    weitere_title: 'More from Dr. Marcel Hofeditz',
+    weitere_podcast: 'Off-market, markets & investors',
+    weitere_linkedin: 'Market analysis & platform updates',
+    weitere_omp: 'Europe\'s off-market platform',
     // Footer
     footer_ecosystem: 'Ecosystem',
     footer_founder: 'Founder & Research',
