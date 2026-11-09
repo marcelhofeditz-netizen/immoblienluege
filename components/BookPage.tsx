@@ -1,12 +1,12 @@
-import { content, MAIL, SITE, type Lang } from '@/lib/content'
+import { content, SITE, type Lang } from '@/lib/content'
 import { Cover } from './Cover'
 import { DocChat } from './DocChat'
+import { Waitlist } from './Waitlist'
 
 const GOLD = '#C9A24D'
 
 export function BookPage({ lang }: { lang: Lang }) {
   const t = content[lang]
-  const mail = `mailto:${MAIL}?subject=${encodeURIComponent(t.finale.mailSubject)}`
   const imprint = lang === 'en' ? 'https://www.dr-hofeditz.de/impressum' : 'https://www.dr-hofeditz.de/impressum'
 
   const faqLd = {
@@ -60,7 +60,7 @@ export function BookPage({ lang }: { lang: Lang }) {
           <a href={t.nav.langHref} className="border border-[#333] px-3 py-1.5 text-[0.7rem] uppercase tracking-[0.14em] text-grey-secondary hover:text-text-primary">
             {t.nav.lang}
           </a>
-          <a href={mail} className="hidden bg-[#F6F6F6] px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-black sm:inline-block">
+          <a href="#warteliste" className="hidden bg-[#F6F6F6] px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-black sm:inline-block">
             {t.nav.cta}
           </a>
         </div>
@@ -86,7 +86,7 @@ export function BookPage({ lang }: { lang: Lang }) {
               </p>
               <p className="mt-5 max-w-[38rem] text-[clamp(1rem,1.4vw,1.15rem)] leading-[1.7] text-[#d6d6d6]">{t.hero.lead}</p>
               <div className="mt-10 flex flex-wrap gap-3">
-                <a href={mail} className="btn-solid-x">{t.hero.cta1}</a>
+                <a href="#warteliste" className="btn-solid-x">{t.hero.cta1}</a>
                 <a href="#doc" className="btn-ghost-x">{t.hero.cta2}</a>
               </div>
           </div>
@@ -282,14 +282,24 @@ export function BookPage({ lang }: { lang: Lang }) {
         </div>
       </section>
 
-      {/* FINALE */}
-      <section className="relative isolate overflow-hidden border-t border-grey-light px-[5vw] py-32 text-center">
-        <img src="/img/cover-art.webp" alt="" aria-hidden className="absolute inset-0 -z-10 h-full w-full object-cover opacity-25" />
+      {/* WARTELISTE */}
+      <section id="warteliste" className="relative isolate scroll-mt-16 overflow-hidden border-t border-grey-light px-[5vw] py-28">
+        <img src="/img/cover-art.webp" alt="" aria-hidden className="absolute inset-0 -z-10 h-full w-full object-cover opacity-20" />
         <div className="absolute inset-0 -z-10" style={{ background: 'radial-gradient(ellipse at center,#0B0B0B66,#0B0B0B 75%)' }} />
-        <p className="kicker mb-6" style={{ color: GOLD }}>{t.finale.kicker}</p>
-        <h2 className="display mx-auto mb-8 max-w-[14ch] text-text-primary" style={{ fontSize: 'clamp(2.6rem, 7vw, 6.4rem)' }}>{t.finale.title}</h2>
-        <p className="mx-auto mb-10 max-w-[34rem] text-[1.08rem] leading-[1.7] text-[#d6d6d6]">{t.finale.text}</p>
-        <a href={mail} className="btn-solid-x">{t.finale.cta}</a>
+        <div className="mx-auto max-w-[1100px] text-center">
+          <p className="kicker mb-6" style={{ color: GOLD }}>{t.finale.kicker}</p>
+          <h2 className="display mx-auto mb-6 max-w-[14ch] text-text-primary" style={{ fontSize: 'clamp(2.6rem, 7vw, 6.4rem)' }}>{t.finale.title}</h2>
+          <p className="mx-auto mb-14 max-w-[34rem] text-[1.08rem] leading-[1.7] text-[#d6d6d6]">{t.finale.text}</p>
+          <div className="mb-14 grid gap-px bg-grey-light text-left md:grid-cols-3">
+            {t.finale.perks.map(([h, d]) => (
+              <div key={h} className="bg-[#0B0B0B]/90 p-7">
+                <p className="mb-3 text-[1.2rem] font-extrabold uppercase text-text-primary">{h}</p>
+                <p className="text-[0.95rem] leading-relaxed text-[#bdbdbd]">{d}</p>
+              </div>
+            ))}
+          </div>
+          <Waitlist lang={lang} quelle={lang === 'en' ? 'thepropertylie' : 'immobilienluege'} />
+        </div>
       </section>
 
       {/* FOOTER */}
